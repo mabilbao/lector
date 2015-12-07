@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($rootScope, $ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -16,9 +16,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
       StatusBar.styleDefault();
     }
   });
+
+	$ionicPlatform.registerBackButtonAction(function (event) {
+		if ($state.is('app.home')) {
+			navigator.app.exitApp();
+		} else {
+			navigator.app.back();
+		}
+	}, 101);
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
 			$stateProvider
 					.state('app', {
@@ -37,6 +45,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 					})
 					.state('app.result', {
 						url: "/result",
+						params: {
+							success: null,
+							message: null,
+							data: null
+						},
 						views: {
 							'home-tab': {
 								templateUrl: "templates/result.html",
