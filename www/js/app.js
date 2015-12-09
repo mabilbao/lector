@@ -5,8 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($rootScope, $ionicPlatform) {
-  $ionicPlatform.ready(function() {
+.run(function($rootScope, $ionicPlatform, $state, $ionicHistory) {
+
+	$ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -17,11 +18,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     }
   });
 
-	$ionicPlatform.registerBackButtonAction(function (event) {
+	$ionicPlatform.registerBackButtonAction(function () {
+		console.log($ionicHistory);
 		if ($state.is('app.home')) {
 			navigator.app.exitApp();
 		} else {
-			navigator.app.back();
+			$ionicHistory.goBack();
+			//navigator.app.back();
 		}
 	}, 101);
 })
