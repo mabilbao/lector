@@ -19,7 +19,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   });
 
 	$ionicPlatform.registerBackButtonAction(function () {
-		console.log($ionicHistory);
 		if ($state.is('app.home')) {
 			navigator.app.exitApp();
 		} else {

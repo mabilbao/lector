@@ -17,7 +17,8 @@ angular.module('starter.controllers', ['ionic'])
 						//console.log("Cancelled -> " + barcodeData.cancelled);
 
 						if ( barcodeData.cancelled ){
-							$state.go("app.home");
+							//$state.go("app.home");
+							return;
 						}else{
 							data = {
 								success: true,
