@@ -30,46 +30,64 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-			$stateProvider
-					.state('app', {
-						url: "/app",
-						abstract: true,
-						templateUrl: "templates/index.html"
-					})
-					.state('app.home', {
-						url: "/home",
-						views: {
-							'home-tab': {
-								templateUrl: "templates/home.html",
-								controller: "HomeCtrl"
-							}
-						}
-					})
-					.state('app.result', {
-						url: "/result",
-						params: {
-							success: null,
-							message: null,
-							data: null
-						},
-						views: {
-							'home-tab': {
-								templateUrl: "templates/result.html",
-								controller: "ResultCtrl"
-							}
-						}
-					})
-					.state('app.contact', {
-						url: "/contact",
-						views: {
-							'contact-tab': {
-								templateUrl: "templates/contact.html"
-							}
-						}
-					});
+	$stateProvider
+		.state('app', {
+			url: "/app",
+			abstract: true,
+			templateUrl: "templates/index.html"
+		})
+		.state('app.home', {
+			url: "/home",
+			views: {
+				'home-tab': {
+					templateUrl: "templates/home.html",
+					controller: "HomeCtrl"
+				}
+			}
+		})
+		.state('app.result', {
+			url: "/result",
+			params: {
+				success: null,
+				message: null,
+				data: null
+			},
+			views: {
+				'home-tab': {
+					templateUrl: "templates/result.html",
+					controller: "ResultCtrl"
+				}
+			}
+		})
+		.state('app.product', {
+			url: "/product",
+			views: {
+				'product-tab': {
+					templateUrl: "templates/product/index.html",
+					controller: "ProductCtrl"
+				}
+			}
+		})
+		.state('app.product-new', {
+			url: "/new",
+			views: {
+				'product-tab': {
+					templateUrl: "templates/product/new.html",
+					controller: "ProductCtrl"
+				}
+			}
+		})
+		.state('app.contact', {
+			url: "/contact",
+			views: {
+				'contact-tab': {
+					templateUrl: "templates/contact.html"
+				}
+			}
+		});
 
 
-			$urlRouterProvider.otherwise("/app/home");
+	$urlRouterProvider.otherwise("/app/home");
 
 
 });
