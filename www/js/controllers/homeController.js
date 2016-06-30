@@ -1,5 +1,5 @@
 angular.module('controllers')
-    .controller('HomeCtrl', function($scope, $cordovaDevice, $cordovaBarcodeScanner, $state, $cordovaSQLite, db) {
+    .controller('HomeCtrl', function($scope, $cordovaBarcodeScanner, $state, $cordovaSQLite, db) {
         var data;
 
         // db.then(function(val) {
@@ -40,10 +40,10 @@ angular.module('controllers')
 
         $scope.read = function() {
 
-            console.log(ionic.Platform.device());
-            console.log(Object.keys(ionic.Platform.device()).length);
-
-            if ( Object.keys(ionic.Platform.device()).length != 0 ){
+            // console.log(ionic.Platform.device());
+            // console.log(Object.keys(ionic.Platform.device()).length);
+            //
+            // if ( Object.keys(ionic.Platform.device()).length != 0 ){
                 document.addEventListener("deviceready", function () {
                     $cordovaBarcodeScanner
                         .scan()
@@ -76,18 +76,18 @@ angular.module('controllers')
                             $state.go('app.result', data);
                         });
                 }, false);
-            }else{
-                data = {
-                    success: true,
-                    data: [
-                        {
-                            "barcode": "1234567890",
-                            "barcode_format": "QR_CODE"
-                        }
-                    ]
-                };
-                $state.go('app.result', data);
-            }
+            // }else{
+            //     data = {
+            //         success: true,
+            //         data: [
+            //             {
+            //                 "barcode": "1234567890",
+            //                 "barcode_format": "QR_CODE"
+            //             }
+            //         ]
+            //     };
+            //     $state.go('app.result', data);
+            // }
         }
     }
 )
