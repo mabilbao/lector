@@ -33,19 +33,29 @@ angular.module('lector', [
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
 	$stateProvider
+		// App
 		.state('app', {
 			url: "/app",
 			abstract: true,
 			templateUrl: "templates/index.html"
 		})
+
+		// Home
 		.state('app.home', {
 			url: "/home",
 			views: {
 				'home-tab': {
-					templateUrl: "templates/home.html",
+					templateUrl: "templates/home/index.html",
 					controller: "HomeCtrl"
+				}
+			}
+		})
+		.state('app.contact', {
+			url: "/contact",
+			views: {
+				'home-tab': {
+					templateUrl: "templates/contact.html"
 				}
 			}
 		})
@@ -63,6 +73,8 @@ angular.module('lector', [
 				}
 			}
 		})
+
+		// Product
 		.state('app.product', {
 			url: "/product",
 			views: {
@@ -78,14 +90,6 @@ angular.module('lector', [
 				'product-tab': {
 					templateUrl: "templates/product/new.html",
 					controller: "ProductCtrl"
-				}
-			}
-		})
-		.state('app.contact', {
-			url: "/contact",
-			views: {
-				'contact-tab': {
-					templateUrl: "templates/contact.html"
 				}
 			}
 		});
